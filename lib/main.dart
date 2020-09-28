@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
       title: 'Dogelbow',
       home: ChangeNotifierProvider<MQTTAppState>(
         create: (_) => MQTTAppState(),
-        child: MQTTView(),
-        // child: LoginPage(),
+        // child: MQTTView(),
+        child: LoginPage(),
       )
     );
   }
