@@ -1,3 +1,4 @@
+import 'package:day12_login/pages/mqttview.dart';
 import 'package:day12_login/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:day12_login/Animation/FadeAnimation.dart';
@@ -85,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
               //============= Below is username + Password part ================
               
 	            Padding(
-                  padding: EdgeInsets.all(30.0),
+                  padding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -167,13 +168,18 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: () {
                                     bool pass = _formKey.currentState.validate();
                                     if (pass) {
-                                      LoadingIndicator.start(context);
+                                      // LoadingIndicator.start(context);
                                       username = usernameController.text.trim();
                                       password = passwordController.text.trim();
                                       print('Username = $username, Password = $password');
+                                      if(username == 'admin' && password == 'admin'){
+                                        print('==== come here ====');
+                                        // Navigator.pushReplacementNamed(context, '/mqtt_page');
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => MQTTView()));
+                                      }
                                     }
-                                    // TODO: call API
                                     // LoadingIndicator.stop(context);
+
                                   }),
                             )),
 
